@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal English Expressions: "Boa sorte com isso"</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A192F;
+            color: #E2E8F0;
+        }
+        .gradient-text-title {
+            background: linear-gradient(90deg, #FF3300, #FFFFCC, #00CCCC, #FF00FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .lesson-card {
+            background-color: #112240;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .situation-card {
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .situation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        }
+        .situation-card .details {
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, margin-top 0.5s ease-in-out;
+            margin-top: 0;
+        }
+        .situation-card.open .details {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 1rem;
+        }
+        .quiz-option {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        .quiz-option:hover {
+            background-color: #334155;
+            border-color: #475569;
+        }
+        .quiz-option.correct {
+            background-color: #10B981;
+            border-color: #059669;
+        }
+        .quiz-option.incorrect {
+            background-color: #EF4444;
+            border-color: #DC2626;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-4xl mx-auto space-y-12">
+        
+        <div class="text-right">
+            <button id="language-button" class="px-4 py-2 text-sm font-semibold text-white bg-sky-600 rounded-full shadow-lg hover:bg-sky-700 transition-colors duration-300">
+                Mudar para Português
+            </button>
+        </div>
+
+        <!-- English Content -->
+        <div id="english-content">
+            <header class="text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold">
+                    <span class="gradient-text-title">"Good Luck With That"</span>
+                </h1>
+                <p class="mt-2 text-lg text-slate-400">Understanding the sarcasm behind the words.</p>
+                <p class="text-sm text-slate-500">by Daby</p>
+            </header>
+
+            <main class="space-y-12">
+                <section class="lesson-card">
+                    <h2 class="text-2xl font-bold text-sky-400 mb-4">Literal vs. Real Meaning</h2>
+                    <p class="text-slate-300">
+                        While <strong class="text-amber-300">"good luck with that"</strong> literally means wishing someone success, it's very often used sarcastically to express disbelief or doubt. It's what you say when someone proposes something difficult, unrealistic, or even foolish. It's the English version of a passive-aggressive "I don't think so."
+                    </p>
+                    <p class="text-slate-300 mt-4">
+                        The real meaning depends heavily on tone and context. Let's see how it's used in real situations.
+                    </p>
+                </section>
+
+                <section>
+                    <h2 class="text-2xl font-bold text-center mb-6">Real-Life Situations <span class="text-base font-normal text-slate-400">(Click to reveal the meaning)</span></h2>
+                    <div id="situations-container-en" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Situation cards will be inserted here by JavaScript -->
+                    </div>
+                </section>
+
+                <section class="lesson-card">
+                    <h2 class="text-2xl font-bold text-sky-400 mb-4">How Would a Brazilian Say This?</h2>
+                    <p class="text-slate-300">
+                        In Brazil, we don't have a single phrase that perfectly matches "good luck with that," but we have a few that capture the same sarcastic tone depending on the situation.
+                    </p>
+                    <ul class="list-disc list-inside mt-4 space-y-2 text-slate-300">
+                        <li>
+                            <strong class="text-amber-300">"Boa sorte, viu!"</strong>: The literal translation, but said with a skeptical, drawn-out "viu!" at the end. The tone is everything.
+                        </li>
+                        <li>
+                            <strong class="text-amber-300">"É pra rir ou pra chorar?"</strong>: A rhetorical question used to express disbelief at how difficult or ridiculous a situation is.
+                        </li>
+                        <li>
+                            <strong class="text-amber-300">"Eu duvido."</strong>: A more direct and less common phrase, but it gets the point across.
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="quiz-container-en" class="lesson-card">
+                    <h2 class="text-2xl font-bold text-center text-sky-400">Test Your Knowledge! 🧐</h2>
+                    <div id="quiz-question-en" class="mt-6"></div>
+                </section>
+            </main>
+        </div>
+
+        <!-- Portuguese Content -->
+        <div id="portuguese-content" class="hidden">
+            <header class="text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold">
+                    <span class="gradient-text-title">"Boa Sorte Com Isso"</span>
+                </h1>
+                <p class="mt-2 text-lg text-slate-400">Entendendo o sarcasmo por trás das palavras.</p>
+                <p class="text-sm text-slate-500">por Daby</p>
+            </header>
+
+            <main class="space-y-12">
+                <section class="lesson-card">
+                    <h2 class="text-2xl font-bold text-sky-400 mb-4">Significado Literal vs. Real</h2>
+                    <p class="text-slate-300">
+                        Embora <strong class="text-amber-300">"good luck with that"</strong> signifique literalmente desejar sucesso a alguém, ela é muito frequentemente usada de forma sarcástica para expressar descrença ou dúvida. É o que você diz quando alguém propõe algo difícil, irreal ou até mesmo insensato. É a versão em inglês de um "acho que não" passivo-agressivo.
+                    </p>
+                    <p class="text-slate-300 mt-4">
+                        O significado real depende muito do tom e do contexto. Vamos ver como ela é usada em situações reais.
+                    </p>
+                </section>
+
+                <section>
+                    <h2 class="text-2xl font-bold text-center mb-6">Situações Reais <span class="text-base font-normal text-slate-400">(Clique para revelar o significado)</span></h2>
+                    <div id="situations-container-pt" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Situation cards will be inserted here by JavaScript -->
+                    </div>
+                </section>
+                
+                <section class="lesson-card">
+                    <h2 class="text-2xl font-bold text-sky-400 mb-4">Como um brasileiro diria isso?</h2>
+                    <p class="text-slate-300">
+                        No Brasil, não temos uma única frase que corresponda perfeitamente a "good luck with that", mas temos algumas que capturam a mesma conotação sarcástica, dependendo da situação.
+                    </p>
+                    <ul class="list-disc list-inside mt-4 space-y-2 text-slate-300">
+                        <li>
+                            <strong class="text-amber-300">"Boa sorte, viu!"</strong>: A tradução literal, mas dita com um "viu!" cético e arrastado no final. O tom de voz é tudo.
+                        </li>
+                        <li>
+                            <strong class="text-amber-300">"É pra rir ou pra chorar?"</strong>: Uma pergunta retórica usada para expressar descrença diante de quão difícil ou ridícula é uma situação.
+                        </li>
+                        <li>
+                            <strong class="text-amber-300">"Eu duvido."</strong>: Uma frase mais direta e menos sutil, mas que também transmite a ideia de descrença.
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="quiz-container-pt" class="lesson-card">
+                    <h2 class="text-2xl font-bold text-center text-sky-400">Teste seu Conhecimento! 🧐</h2>
+                    <div id="quiz-question-pt" class="mt-6"></div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const situationsData = [
+                {
+                    situation_en: "Getting a refund without a receipt",
+                    situation_pt: "Tentar obter um reembolso sem recibo",
+                    literal_pt: "Boa sorte com isso!",
+                    real_meaning_pt: "Você acha que vai conseguir? Duvido. Isso é praticamente impossível.",
+                    example_en: "A: 'I'm going to try to get a refund for this jacket, even though I don't have the receipt.' B: 'Good luck with that.'",
+                    example_pt: "A: 'Vou tentar pegar o reembolso desta jaqueta, mesmo sem o recibo.' B: 'Boa sorte com isso.'",
+                },
+                {
+                    situation_en: "A friend with an unrealistic goal",
+                    situation_pt: "Um amigo com uma meta irrealista",
+                    literal_pt: "Boa sorte com isso!",
+                    real_meaning_pt: "Sua meta é completamente absurda e você provavelmente vai falhar. Estou sendo educado ao não dizer isso diretamente.",
+                    example_en: "A: 'I'm going to write and publish a best-selling novel in just one month.' B: 'Wow, good luck with that.'",
+                    example_pt: "A: 'Vou escrever e publicar um romance best-seller em apenas um mês.' B: 'Nossa, boa sorte com isso.'",
+                },
+                {
+                    situation_en: "A coworker's difficult task",
+                    situation_pt: "Uma tarefa difícil para um colega de trabalho",
+                    literal_pt: "Boa sorte com isso!",
+                    real_meaning_pt: "Essa tarefa é extremamente difícil e eu não a faria, então não espere que eu te ajude. Você está por sua conta.",
+                    example_en: "A: 'I have to finish all these reports by tomorrow morning.' B: 'Yeah, good luck with that.'",
+                    example_pt: "A: 'Tenho que terminar todos esses relatórios até amanhã de manhã.' B: 'É, boa sorte com isso.'",
+                },
+                {
+                    situation_en: "Dealing with a difficult person",
+                    situation_pt: "Lidar com uma pessoa difícil",
+                    literal_pt: "Boa sorte com isso!",
+                    real_meaning_pt: "Essa pessoa é impossível de se lidar. Você vai ter sérios problemas. Eu já tentei e falhei.",
+                    example_en: "A: 'I'm going to try to reason with our new manager about the schedule change.' B: 'Good luck with that, she never listens.'",
+                    example_pt: "A: 'Vou tentar conversar com a nossa nova gerente sobre a mudança de horário.' B: 'Boa sorte com isso, ela nunca ouve.'",
+                },
+                {
+                    situation_en: "Trying to convince a cat to do something",
+                    situation_pt: "Tentar convencer um gato a fazer algo",
+                    literal_pt: "Boa sorte com isso!",
+                    real_meaning_pt: "É impossível controlar um gato. Ele vai fazer o que quiser, e você vai falhar nessa missão. Não vale a pena nem tentar.",
+                    example_en: "A: 'I'm going to try to give my cat a bath without getting scratched.' B: 'Good luck with that.'",
+                    example_pt: "A: 'Vou tentar dar banho no meu gato sem ele me arranhar.' B: 'Boa sorte com isso.'",
+                },
+                {
+                    situation_en: "A car that is about to break down",
+                    situation_pt: "Comprar um carro que está prestes a quebrar",
+                    literal_pt: "Boa sorte com isso!",
+                    real_meaning_pt: "Esse carro é uma bomba-relógio. Você vai ter muitos problemas e gastar muito dinheiro com ele. É uma escolha péssima.",
+                    example_en: "A: 'This car has 200,000 miles, but the seller said it's perfect.' B: 'Good luck with that.'",
+                    example_pt: "A: 'Este carro tem 200.000 km, mas o vendedor disse que está perfeito.' B: 'Boa sorte com isso.'",
+                }
+            ];
+
+            const quizData = [
+                {
+                    situation_pt: "Seu amigo, que é péssimo em matemática, diz que vai resolver um problema de cálculo complexo sem ajuda. O que você diria?",
+                    options_pt: ["Eu posso te ajudar.", "Tenho certeza que você consegue.", "Boa sorte com isso."],
+                    answer_pt: "Boa sorte com isso.",
+                    situation_en: "Your friend, who is terrible at math, says he's going to solve a complex calculus problem without help. What would you say?",
+                    options_en: ["I can help you.", "I'm sure you can do it.", "Good luck with that."],
+                    answer_en: "Good luck with that."
+                },
+                {
+                    situation_pt: "Você ouve um colega de trabalho reclamando que o chefe pediu para ele terminar um projeto de uma semana em um dia. Qual a sua reação?",
+                    options_pt: ["Eu posso te ajudar.", "Isso é muito trabalho!", "Boa sorte com isso."],
+                    answer_pt: "Boa sorte com isso.",
+                    situation_en: "You hear a coworker complaining that the boss asked him to finish a week-long project in one day. What is your reaction?",
+                    options_en: ["I can help you.", "That's a lot of work!", "Good luck with that."],
+                    answer_en: "Good luck with that."
+                },
+                {
+                    situation_pt: "Seu amigo diz: 'Vou conseguir tirar a carteira de motorista em apenas um dia aqui em São Paulo.' O que você responderia?",
+                    options_pt: ["Vamos nessa!", "Acho que você deveria tentar.", "Boa sorte com isso."],
+                    answer_pt: "Boa sorte com isso.",
+                    situation_en: "Your friend says: 'I'm going to get my driver's license in just one day here in São Paulo.' How would you respond?",
+                    options_en: ["Let's do it!", "I think you should try.", "Good luck with that."],
+                    answer_en: "Good luck with that."
+                },
+                {
+                    situation_pt: "Seu colega de trabalho anuncia que vai conseguir um aumento de salário depois de uma briga com o chefe. Qual a melhor reação?",
+                    options_pt: ["Você mereceu!", "É uma ótima ideia!", "Boa sorte com isso."],
+                    answer_pt: "Boa sorte com isso.",
+                    situation_en: "Your coworker announces he's going to get a raise after a big fight with the boss. What's the best reaction?",
+                    options_en: ["You earned it!", "That's a great idea!", "Good luck with that."],
+                    answer_en: "Good luck with that."
+                }
+            ];
+
+            let currentQuestionIndex = 0;
+            let score = 0;
+            let isQuizCompleted = false;
+
+            function createSituationCard(data, lang) {
+                const isPt = lang === 'pt';
+                const situation = isPt ? data.situation_pt : data.situation_en;
+                const literal = isPt ? data.literal_pt : `Literal: Good luck with that!`;
+                const realMeaning = isPt ? data.real_meaning_pt : data.real_meaning_en;
+                const example = isPt ? data.example_pt : data.example_en;
+
+                return `
+                    <div class="lesson-card situation-card">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xl font-bold text-amber-300">${situation}</h3>
+                            <span class="text-3xl">🤔</span>
+                        </div>
+                        <div class="details">
+                            <p class="text-slate-300"><strong>${isPt ? "O que um brasileiro pensaria:" : "What a Brazilian would think:"}</strong> "${literal}"</p>
+                            <p class="text-slate-300 mt-2"><strong>${isPt ? "O que realmente significa:" : "What it really means:"}</strong> ${realMeaning}</p>
+                            <p class="mt-4 italic text-slate-400">
+                                <strong class="text-sky-400">${isPt ? "Exemplo:" : "Example:"}</strong> "${example}"
+                            </p>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            function renderSituations() {
+                const containerEn = document.getElementById('situations-container-en');
+                const containerPt = document.getElementById('situations-container-pt');
+                
+                containerEn.innerHTML = situationsData.map(d => createSituationCard(d, 'en')).join('');
+                containerPt.innerHTML = situationsData.map(d => createSituationCard(d, 'pt')).join('');
+
+                document.querySelectorAll('.situation-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        card.classList.toggle('open');
+                    });
+                });
+            }
+
+            function renderQuiz(lang) {
+                const isPt = lang === 'pt';
+                const quizContainer = document.getElementById(isPt ? 'quiz-question-pt' : 'quiz-question-en');
+                
+                if (currentQuestionIndex >= quizData.length) {
+                    quizContainer.innerHTML = `
+                        <h2 class="text-2xl font-bold text-center text-sky-400">${isPt ? "Quiz Finalizado!" : "Quiz Complete!"}</h2>
+                        <p class="text-center text-lg mt-4 text-slate-300">${isPt ? "Sua pontuação:" : "Your score:"} ${score} / ${quizData.length}</p>
+                        <div class="text-center mt-6">
+                            <button id="restart-quiz-${lang}" class="px-6 py-2 bg-amber-500 text-white font-semibold rounded-full hover:bg-amber-600 transition-colors">
+                                ${isPt ? "Recomeçar" : "Restart"}
+                            </button>
+                        </div>
+                    `;
+                    document.getElementById(`restart-quiz-${lang}`).addEventListener('click', () => {
+                        currentQuestionIndex = 0;
+                        score = 0;
+                        isQuizCompleted = false;
+                        renderQuiz(lang);
+                    });
+                    return;
+                }
+                
+                const question = quizData[currentQuestionIndex];
+                const situation = isPt ? question.situation_pt : question.situation_en;
+                const options = isPt ? question.options_pt : question.options_en;
+                const answer = isPt ? question.answer_pt : question.answer_en;
+
+                const optionsHtml = options.map(option => `
+                    <button class="quiz-option w-full text-left p-4 rounded-lg font-semibold" data-answer="${option}">${option}</button>
+                `).join('');
+
+                quizContainer.innerHTML = `
+                    <p class="text-lg font-medium text-slate-300 mb-4">${isPt ? "Situação:" : "Situation:"} ${situation}</p>
+                    <div class="space-y-3" id="options-container-${lang}">
+                        ${optionsHtml}
+                    </div>
+                    <div id="feedback-${lang}" class="mt-4 text-center font-bold"></div>
+                `;
+
+                document.querySelectorAll(`#options-container-${lang} .quiz-option`).forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        if(isQuizCompleted) return;
+                        const selectedAnswer = e.target.dataset.answer;
+                        const feedbackEl = document.getElementById(`feedback-${lang}`);
+                        
+                        document.querySelectorAll(`#options-container-${lang} .quiz-option`).forEach(btn => {
+                            btn.disabled = true;
+                        });
+
+                        if (selectedAnswer === answer) {
+                            e.target.classList.add('correct');
+                            feedbackEl.textContent = isPt ? 'Correto! 🎉' : 'Correct! 🎉';
+                            feedbackEl.className = 'mt-4 text-center font-bold text-green-400';
+                            score++;
+                        } else {
+                            e.target.classList.add('incorrect');
+                            feedbackEl.textContent = `${isPt ? 'Incorreto. A resposta certa é:' : 'Incorrect. The right answer is:'} ${answer}`;
+                            feedbackEl.className = 'mt-4 text-center font-bold text-red-400';
+                            document.querySelector(`#options-container-${lang} .quiz-option[data-answer="${answer}"]`).classList.add('correct');
+                        }
+                        
+                        setTimeout(() => {
+                            currentQuestionIndex++;
+                            renderQuiz(lang);
+                        }, 2000);
+                    });
+                });
+            }
+
+            const portugueseContent = document.getElementById('portuguese-content');
+            const englishContent = document.getElementById('english-content');
+            const languageButton = document.getElementById('language-button');
+
+            languageButton.addEventListener('click', () => {
+                const isEnglishVisible = !englishContent.classList.contains('hidden');
+                englishContent.classList.toggle('hidden', isEnglishVisible);
+                portugueseContent.classList.toggle('hidden', !isEnglishVisible);
+                languageButton.textContent = isEnglishVisible ? 'Switch to English' : 'Mudar para Português';
+            });
+            
+            renderSituations();
+            renderQuiz('en');
+            renderQuiz('pt');
+        });
+    </script>
+</body>
+</html>
